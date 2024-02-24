@@ -1,8 +1,18 @@
-# Alpine 3.19 / Nginx 1.24 / PHP 8.3 - Service
+# Symfony 6 - Service
 
-PHP-FPM 8.3 & Nginx 1.24 container image for Docker, built on [Alpine Linux 3.19](https://www.alpinelinux.org/).
+Container image for Docker
 
-Repository: https://github.com/pabloripoll/docker-php-8.3-service
+## Alpine 3.19 / Nginx 1.24 / PHP 8.3
+
+- [Symfony 6](https://symfony.com/doc/6.4/setup.html)
+
+- [PHP-FPM 8.3](https://www.php.net/releases/8.3/en.php)
+
+- [Nginx 1.24](https://nginx.org/)
+
+- [Alpine Linux 3.19](https://www.alpinelinux.org/)
+
+Repository: https://github.com/pabloripoll/docker-symfony-php-8.3-service
 
 * Built on the lightweight and secure Alpine Linux distribution
 * Multi-platform, supporting AMD4, ARMv6, ARMv7, ARM64
