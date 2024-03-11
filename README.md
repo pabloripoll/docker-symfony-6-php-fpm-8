@@ -196,22 +196,23 @@ $ make project-build
 SYMFONY docker-compose.yml .env file has been set.
 SYMFONY DB docker-compose.yml .env file has been set.
 
-[+] Building 9.1s (10/10) FINISHED                                     docker:default
+[+] Building 10.7s (10/10) FINISHED                                    docker:default
  => [mariadb internal] load build definition from Dockerfile           0.0s
  => => transferring dockerfile: 1.13kB
 ...
- => => naming to docker.io/library/symfony-db:mariadb-15                  0.0s
+ => => naming to docker.io/library/symfony-db:mariadb-15               0.0s
 [+] Running 1/2
- ⠧ Network symfony-db_default  Created                                    0.7s
- ✔ Container symfony-db        Started                                    0.6s
+ ⠧ Network symfony-db_default  Created                                 0.7s
+ ✔ Container symfony-db        Started                                 0.6s
 
-[+] Building 49.7s (25/25)                                             docker:default
+
+[+] Building 31.5s (25/25)                                             docker:default
  => [wordpress internal] load build definition from Dockerfile         0.0s
  => => transferring dockerfile: 2.47kB
 ...
-=> => naming to docker.io/library/symfony-app:php-8.3                     0.0s
+=> => naming to docker.io/library/symfony-app:php-8.3                  0.0s
 [+] Running 1/2
- ⠇ Network symfony-app_default  Created                                   0.8s
+ ⠇ Network symfony-app_default  Created                                0.8s
  ✔ Container symfony-app        Started
 ```
 
@@ -288,23 +289,26 @@ SYMFONY DB docker-compose.yml .env file has been set.
 Docker container
 ```bash
 $ sudo docker ps -a
-CONTAINER ID   IMAGE      COMMAND    CREATED         STATUS                     PORTS                                             NAMES
-0f94fe4739a6   php-8...   "doc…"     2 minutes ago   Up 2 minutes (unhealthy)   9000/tcp, 0.0.0.0:8888->80/tcp, :::8888->80/tcp   myphp
+CONTAINER ID   IMAGE      COMMAND    CREATED      STATUS      PORTS                                             NAMES
+ecd27aeae010   symf...   "docker-php-entrypoi…"   3 mins...   9000/tcp, 0.0.0.0:8888->80/tcp, :::8888->80/tcp   symfony-app
+52a9994c31b0   symf...   "/init"                  4 mins...   0.0.0.0:8889->3306/tcp, :::8889->3306/tcp         symfony-db
+
 ```
 
 Docker image
 ```bash
 $ sudo docker images
 REPOSITORY   TAG           IMAGE ID       CREATED         SIZE
-php-8.3      alpine-3.19   8f7db0dfcde1   3 minutes ago   199MB
+symfony-app  symf...       373f6967199b   5 minutes ago   200MB
+symfony-db   symf...       1f1775f7e1db   6 minutes ago   333MB
 ```
 
 Docker stats
 ```bash
 $ sudo docker system df
 TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
-Images          1         1         199.5MB   0B (0%)
-Containers      1         1         33.32MB   0B (0%)
+Images          1         1         532.2MB   0B (0%)
+Containers      1         1         25.03kB   0B (0%)
 Local Volumes   1         0         117.9MB   117.9MB (100%)
 Build Cache     39        0         10.21kB    10.21kB
 ```
@@ -313,7 +317,7 @@ Removing container and image generated
 ```bash
 $ sudo docker system prune
 ...
-Total reclaimed space: 116.4MB
+Total reclaimed space: 423.4MB
 ```
 *(no need for pruning volume)*
 
@@ -389,3 +393,28 @@ GET: http://localhost:8888/api/v1/health/db
     "status": true
 }
 ```
+
+## Stop Containers
+...
+
+## remove Containers
+Destroy containers
+```bash
+$ make project-destroy
+
+[+] Killing 1/1
+ ✔ Container symfony-db  Killed                    0.4s
+Going to remove symfony-db
+[+] Removing 1/0
+ ✔ Container symfony-db  Removed                   0.0s
+[+] Running 1/1
+ ✔ Network symfony-db_default  Removed             0.3s
+
+[+] Killing 1/1
+ ✔ Container symfony-app  Killed                   0.4s
+Going to remove symfony-app
+[+] Removing 1/0
+ ✔ Container symfony-app  Removed                  0.0s
+[+] Running 1/1
+ ✔ Network symfony-app_default  Removed
+ ```
