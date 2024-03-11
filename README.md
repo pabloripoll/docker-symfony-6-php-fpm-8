@@ -384,10 +384,26 @@ GET: http://localhost:8888/api/v1/health/db
 ```
 
 ## Stop Containers
-...
 
-## remove Containers
-Destroy containers
+For stopping symfony and database containers
+```bash
+$ make project-stop
+
+[+] Killing 1/1
+ ✔ Container symfony-db  Killed               0.5s
+Going to remove symfony-db
+[+] Removing 1/0
+ ✔ Container symfony-db  Removed              0.0s
+[+] Killing 1/1
+ ✔ Container symfony-app  Killed              0.5s
+Going to remove symfony-app
+[+] Removing 1/0
+ ✔ Container symfony-app  Removed             0.0s
+```
+
+## Remove Containers
+
+To destroy both symfony and database containers
 ```bash
 $ make project-destroy
 
