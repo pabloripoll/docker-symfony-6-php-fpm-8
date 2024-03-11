@@ -73,24 +73,24 @@ database-backup: ## creates a .sql file from container database to the determine
 	echo ${C_BLU}"$(DOCKER_TITLE)"${C_END}" database "${C_GRN}"backup has been created."${C_END};
 
 # -------------------------------------------------------------------------------------------------
-#  Laravel & Database
+#  Symfony & Database
 # -------------------------------------------------------------------------------------------------
 .PHONY: project-set project-build project-start project-stop project-destroy
 
-project-set: ## sets both Laravel and database .env files used by docker-compose.yml
-	$(MAKE) laravel-set database-set
+project-set: ## sets both Symfony and database .env files used by docker-compose.yml
+	$(MAKE) symfony-set database-set
 
-project-build: ## builds both Laravel and database containers from their Docker images
-	$(MAKE) laravel-set database-set database-build laravel-build
+project-build: ## builds both Symfony and database containers from their Docker images
+	$(MAKE) symfony-set database-set database-build symfony-build
 
-project-start: ## starts up both Laravel and database containers running
-	$(MAKE) database-start laravel-start
+project-start: ## starts up both Symfony and database containers running
+	$(MAKE) database-start symfony-start
 
-project-stop: ## stops both Laravel and database containers but data won't be destroyed
-	$(MAKE) database-stop laravel-stop
+project-stop: ## stops both Symfony and database containers but data won't be destroyed
+	$(MAKE) database-stop symfony-stop
 
-project-destroy: ## stops and removes both Laravel and database containers from Docker network destroying their data
-	$(MAKE) database-destroy laravel-destroy
+project-destroy: ## stops and removes both Symfony and database containers from Docker network destroying their data
+	$(MAKE) database-destroy symfony-destroy
 
 # -------------------------------------------------------------------------------------------------
 #  Repository Helper
@@ -101,24 +101,24 @@ repo-flush: ## clears local git repository cache specially to update .gitignore
 	git commit -m "fix: cache cleared for untracked files"
 
 # -------------------------------------------------------------------------------------------------
-#  Laravel Service
+#  Symfony Service
 # -------------------------------------------------------------------------------------------------
-.PHONY: laravel-ssh laravel-set laravel-build laravel-start laravel-stop laravel-destroy
+.PHONY: symfony-ssh symfony-set symfony-build symfony-start symfony-stop symfony-destroy
 
-laravel-ssh: ## enters the Laravel container shell
+symfony-ssh: ## enters the Symfony container shell
 	cd docker/nginx-php && $(MAKE) ssh
 
-laravel-set: ## sets the Laravel PHP enviroment file to build the container
+symfony-set: ## sets the Symfony PHP enviroment file to build the container
 	cd docker/nginx-php && $(MAKE) env-set
 
-laravel-build: ## builds the Laravel PHP container from Docker image
+symfony-build: ## builds the Symfony PHP container from Docker image
 	cd docker/nginx-php && $(MAKE) build
 
-laravel-start: ## starts up the Laravel PHP container running
+symfony-start: ## starts up the Symfony PHP container running
 	cd docker/nginx-php && $(MAKE) up
 
-laravel-stop: ## stops the Laravel PHP container but data won't be destroyed
+symfony-stop: ## stops the Symfony PHP container but data won't be destroyed
 	cd docker/nginx-php && $(MAKE) stop
 
-laravel-destroy: ## stops and removes the Laravel PHP container from Docker network destroying its data
+symfony-destroy: ## stops and removes the Symfony PHP container from Docker network destroying its data
 	cd docker/nginx-php && $(MAKE) stop clear
