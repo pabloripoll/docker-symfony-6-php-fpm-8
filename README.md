@@ -365,19 +365,13 @@ GET: http://localhost:8888/api/v1/health/db
 {
     "status": false,
     "message": "Connect to database failed - Check connection params.",
-    "error": {
-        "errorInfo": [
-            "HY000",
-            2002,
-            "Host is unreachable"
-        ]
-    }
+    "error": "An exception occurred in the driver: SQLSTATE[HY000] [2002] Connection refused"
 }
 ```
 
-Complete the MySQL database connection params. Use local hostname IP `$ make hostname` to set `DB_HOST` variable
+Complete the MySQL database connection params. Use local hostname IP `$ make hostname` to set `IP` param
 ```
-DATABASE_URL="mysql://app:!ChangeMe!@192.168.1.41:8889/app?serverVersion=10.11.2-MariaDB&charset=utf8mb4"
+DATABASE_URL="mysql://symfony:123456@192.168.1.41:8889/symfony?serverVersion=10.11.2-MariaDB&charset=utf8mb4"
 ```
 
 Checking the connection to database once is set correctly will response as follows
