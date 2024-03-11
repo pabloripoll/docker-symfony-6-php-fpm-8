@@ -113,10 +113,10 @@ Directories and main files on a tree architecture description
 │   │   ├── wordpress-init.sql
 │   │   └── wordpress-backup.sql
 │   │
-│   └── laravel
+│   └── symfony
 │       └── (any file or directory required for re-building the Wordpress app...)
 │
-├── laravel
+├── symfony
 │   └── (application...)
 │
 ├── .env
@@ -141,12 +141,12 @@ Makefile  help                     shows this Makefile help message
 Makefile  hostname                 shows local machine ip
 Makefile  fix-permission           sets project directory permission
 Makefile  ports-check              shows this project ports availability on local machine
-Makefile  laravel-ssh              enters the Symfony container shell
-Makefile  laravel-set              sets the Symfony PHP enviroment file to build the container
-Makefile  laravel-build            builds the Symfony PHP container from Docker image
-Makefile  laravel-start            starts up the Symfony PHP container running
-Makefile  laravel-stop             stops the Symfony PHP container but data will not be destroyed
-Makefile  laravel-destroy          stops and removes the Symfony PHP container from Docker network destroying its data
+Makefile  symfony-ssh              enters the Symfony container shell
+Makefile  symfony-set              sets the Symfony PHP enviroment file to build the container
+Makefile  symfony-build            builds the Symfony PHP container from Docker image
+Makefile  symfony-start            starts up the Symfony PHP container running
+Makefile  symfony-stop             stops the Symfony PHP container but data will not be destroyed
+Makefile  symfony-destroy          stops and removes the Symfony PHP container from Docker network destroying its data
 Makefile  database-ssh             enters the database container shell
 Makefile  database-set             sets the database enviroment file to build the container
 Makefile  database-build           builds the database container from Docker image
@@ -200,19 +200,19 @@ SYMFONY DB docker-compose.yml .env file has been set.
  => [mariadb internal] load build definition from Dockerfile           0.0s
  => => transferring dockerfile: 1.13kB
 ...
- => => naming to docker.io/library/laravel-db:mariadb-15                  0.0s
+ => => naming to docker.io/library/symfony-db:mariadb-15                  0.0s
 [+] Running 1/2
- ⠧ Network laravel-db_default  Created                                    0.7s
- ✔ Container laravel-db        Started                                    0.6s
+ ⠧ Network symfony-db_default  Created                                    0.7s
+ ✔ Container symfony-db        Started                                    0.6s
 
 [+] Building 49.7s (25/25)                                             docker:default
  => [wordpress internal] load build definition from Dockerfile         0.0s
  => => transferring dockerfile: 2.47kB
 ...
-=> => naming to docker.io/library/laravel-app:php-8.3                     0.0s
+=> => naming to docker.io/library/symfony-app:php-8.3                     0.0s
 [+] Running 1/2
- ⠇ Network laravel-app_default  Created                                   0.8s
- ✔ Container laravel-app        Started
+ ⠇ Network symfony-app_default  Created                                   0.8s
+ ✔ Container symfony-app        Started
 ```
 
 ## Running the project
@@ -221,9 +221,9 @@ SYMFONY DB docker-compose.yml .env file has been set.
 $ make project-start
 
 [+] Running 1/0
- ✔ Container laravel-db  Running                       0.0s
+ ✔ Container symfony-db  Running                       0.0s
 [+] Running 1/0
- ✔ Container laravel-app  Running                      0.0s
+ ✔ Container symfony-app  Running                      0.0s
  ```
 
 Now, Symfony should be available on local machine by visiting [http://localhost:8888/](http://localhost:8888/)
@@ -376,8 +376,8 @@ Complete the MySQL database connection params. Use local hostname IP `$ make hos
 DB_CONNECTION=mysql
 DB_HOST=192.168.1.41
 DB_PORT=8889
-DB_DATABASE=laravel
-DB_USERNAME=laravel
+DB_DATABASE=symfony
+DB_USERNAME=symfony
 DB_PASSWORD=123456
 ```
 
