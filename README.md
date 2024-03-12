@@ -312,14 +312,6 @@ Local Volumes   1         0         117.9MB   117.9MB (100%)
 Build Cache     39        0         10.21kB    10.21kB
 ```
 
-Removing container and image generated
-```bash
-$ sudo docker system prune
-...
-Total reclaimed space: 423.4MB
-```
-*(no need for pruning volume)*
-
 ## Reset configurations on the run
 In [docker/config/](docker/config/) you'll find the default configuration files for Nginx, PHP and PHP-FPM.
 
@@ -384,7 +376,7 @@ GET: http://localhost:8888/api/v1/health/db
 
 ## Stop Containers
 
-For stopping symfony and database containers
+Using the following Makefile recipe stops symfony and database containers keeping database persistance and as app files are binded to local it wont be any loss
 ```bash
 $ make project-stop
 
@@ -402,7 +394,7 @@ Going to remove symfony-app
 
 ## Remove Containers
 
-To destroy both symfony and database containers
+To stop and remove both symfony and database containers from docker network use the following Makefile recipe
 ```bash
 $ make project-destroy
 
@@ -421,4 +413,19 @@ Going to remove symfony-app
  ✔ Container symfony-app  Removed                  0.0s
 [+] Running 1/1
  ✔ Network symfony-app_default  Removed
- ```
+```
+
+The, remove the Docker images by tag name reference
+```bash
+$ docker rmi $(docker images --filter=reference="*:symfony-*" -q)
+```
+
+Prune Docker system cache
+```bash
+$ sudo docker system prune
+
+...
+Total reclaimed space: 423.4MB
+```
+
+*(no need for pruning volume)*
