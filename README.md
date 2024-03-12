@@ -110,11 +110,11 @@ Directories and main files on a tree architecture description
 │
 ├── resources
 │   ├── database
-│   │   ├── wordpress-init.sql
-│   │   └── wordpress-backup.sql
+│   │   ├── symfony-init.sql
+│   │   └── symfony-backup.sql
 │   │
 │   └── symfony
-│       └── (any file or directory required for re-building the Wordpress app...)
+│       └── (any file or directory required for re-building the app...)
 │
 ├── symfony
 │   └── (application...)
@@ -126,7 +126,7 @@ Directories and main files on a tree architecture description
 
 ## Automation with Makefile
 
-Makefiles are often used to automate the process of building and compiling software on Unix-based systems, including Linux and macOS.
+Makefiles are often used to automate the process of building and compiling software on Unix-based systems as Linux and macOS.
 
 *On Windows - I recommend to use Makefile: \
 https://stackoverflow.com/questions/2532234/how-to-run-a-makefile-in-windows*
@@ -167,10 +167,10 @@ Checkout local machine ports availability
 ```bash
 $ make ports-check
 
-Checking configuration for Symfony container:
-Symfony > port:8888 is free to use.
-Checking configuration for Symfony DB container:
-Symfony DB > port:8889 is free to use.
+Checking configuration for SYMFONY container:
+SYMFONY > port:8888 is free to use.
+Checking configuration for SYMFONY DB container:
+SYMFONY DB > port:8889 is free to use.
 ```
 
 Checkout local machine IP to set connection between containers using the following makefile recipe
@@ -188,7 +188,6 @@ $ make hostname
 - Or whatever you like. This Docker project doesn't come with [PhpMyAdmin](https://www.phpmyadmin.net/) to make it lighter.
 
 ## Build the project
-
 
 ```bash
 $ make project-build
