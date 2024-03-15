@@ -26,7 +26,7 @@ DOCKER_COMPOSE_RUN=$(DOCKER_COMPOSE) run --rm
 DOCKER_EXEC_TOOLS_APP=$(DOCKER_USER) docker exec -it $(DOCKER_CAAS) sh
 
 COMPOSER_UPDATE="composer update"
-COMPOSER_INSTALL="composer create-project lsymfony/skeleton:^6.0 . && composer require webapp"
+COMPOSER_INSTALL='composer create-project symfony/skeleton:"6.4.*" . && composer require webapp'
 
 help: ## shows this Makefile help message
 	echo 'usage: make [target]'
