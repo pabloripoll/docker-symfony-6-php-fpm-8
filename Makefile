@@ -38,6 +38,29 @@ ports-check: ## shows this project ports availability on local machine
 	cd docker/mariadb && $(MAKE) port-check
 
 # -------------------------------------------------------------------------------------------------
+#  Symfony Service
+# -------------------------------------------------------------------------------------------------
+.PHONY: symfony-ssh symfony-set symfony-build symfony-start symfony-stop symfony-destroy
+
+symfony-ssh: ## enters the Symfony container shell
+	cd docker/nginx-php && $(MAKE) ssh
+
+symfony-set: ## sets the Symfony PHP enviroment file to build the container
+	cd docker/nginx-php && $(MAKE) env-set
+
+symfony-build: ## builds the Symfony PHP container from Docker image
+	cd docker/nginx-php && $(MAKE) build
+
+symfony-start: ## starts up the Symfony PHP container running
+	cd docker/nginx-php && $(MAKE) start
+
+symfony-stop: ## stops the Symfony PHP container but data won't be destroyed
+	cd docker/nginx-php && $(MAKE) stop
+
+symfony-destroy: ## removes the Symfony PHP from Docker network destroying its data and Docker image
+	cd docker/nginx-php && $(MAKE) clear destroy
+
+# -------------------------------------------------------------------------------------------------
 #  Database Service
 # -------------------------------------------------------------------------------------------------
 .PHONY: database-ssh database-set database-build database-start database-stop database-destroy database-replace database-backup
@@ -99,26 +122,3 @@ repo-flush: ## clears local git repository cache specially to update .gitignore
 	git rm -rf --cached .
 	git add .
 	git commit -m "fix: cache cleared for untracked files"
-
-# -------------------------------------------------------------------------------------------------
-#  Symfony Service
-# -------------------------------------------------------------------------------------------------
-.PHONY: symfony-ssh symfony-set symfony-build symfony-start symfony-stop symfony-destroy
-
-symfony-ssh: ## enters the Symfony container shell
-	cd docker/nginx-php && $(MAKE) ssh
-
-symfony-set: ## sets the Symfony PHP enviroment file to build the container
-	cd docker/nginx-php && $(MAKE) env-set
-
-symfony-build: ## builds the Symfony PHP container from Docker image
-	cd docker/nginx-php && $(MAKE) build
-
-symfony-start: ## starts up the Symfony PHP container running
-	cd docker/nginx-php && $(MAKE) up
-
-symfony-stop: ## stops the Symfony PHP container but data won't be destroyed
-	cd docker/nginx-php && $(MAKE) stop
-
-symfony-destroy: ## stops and removes the Symfony PHP container from Docker network destroying its data
-	cd docker/nginx-php && $(MAKE) stop clear
