@@ -6,7 +6,7 @@
     </a>
 </div>
 
-# Dockerized Symfony 6 with MariaDB
+# Docker Symfony 6 with MariaDB 10.11
 
 The objective of this repository is having a CaaS [Containers as a Service](https://www.ibm.com/topics/containers-as-a-service) to provide a start up application with the basic enviroment features to deploy a php service running with Nginx and PHP-FPM in a container for [Symfony](https://symfony.com/) and another container with a MySQL database to follow the best practices on an easy scenario to understand and modify on development requirements.
 
