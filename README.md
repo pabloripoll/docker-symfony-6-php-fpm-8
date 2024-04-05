@@ -204,7 +204,7 @@ $ make hostname
 ```bash
 $ make symfony-create
 
-symfony docker-compose.yml .env file has been set.
+SYMFONY docker-compose.yml .env file has been set.
 
 [+] Building 54.3s (26/26) FINISHED                                                 docker:default
 => [nginx-php internal] load build definition from Dockerfile                       0.0s
