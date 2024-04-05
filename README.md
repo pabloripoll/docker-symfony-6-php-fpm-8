@@ -305,7 +305,7 @@ Total reclaimed space: 0MB
 
 There are two PHP files on [resources/symfony](resources/symfony) with same structure as application to replace or add a predifined example to test the service.
 
-It can be used an API platform service *(Postman, Firefox RESTClient, etc..)* or just browsing the following endpoints to check connection with Laravel.
+It can be used an API platform service *(Postman, Firefox RESTClient, etc..)* or just browsing the following endpoints to check connection with Symfony.
 
 Check-out a basic service check
 ```
