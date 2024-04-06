@@ -71,7 +71,7 @@ env-set: ## sets docker .env file
 # -------------------------------------------------------------------------------------------------
 #  Container
 # -------------------------------------------------------------------------------------------------
-.PHONY: ssh build install-app update-app dev up start first stop restart clear
+.PHONY: ssh build up start stop restart clear destroy dev
 
 ssh: ## enters the container shell
 	$(DOCKER_EXEC_TOOLS_APP)
