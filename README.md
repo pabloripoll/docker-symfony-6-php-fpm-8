@@ -154,6 +154,7 @@ Makefile  database-install        installs into container database the init sql 
 Makefile  database-replace        replaces container database with the latest sql backup file from resources/database
 Makefile  database-backup         creates / replace a sql backup file from container database in resources/database
 Makefile  repo-flush              clears local git repository cache specially to update .gitignore
+Makefile  repo-commit             echoes commit helper commands
 ```
 
 ## Service Configuration
