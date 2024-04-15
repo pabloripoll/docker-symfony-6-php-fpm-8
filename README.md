@@ -137,6 +137,7 @@ Directories and main files on a tree architecture description. Main `/docker` di
 .
 │
 ├── docker
+│   │
 │   ├── nginx-php
 │   │   ├── docker
 │   │   │   ├── config
@@ -149,6 +150,7 @@ Directories and main files on a tree architecture description. Main `/docker` di
 │   └── (other...)
 │
 ├── resources
+│   │
 │   ├── database
 │   │   ├── symfony-init.sql
 │   │   └── symfony-backup.sql
