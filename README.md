@@ -130,7 +130,7 @@ RUN apk add \
   ${PHP_V}-pecl-xdebug
 ```
 
-## Structure
+## Directories Structure
 
 Directories and main files on a tree architecture description. Main `/docker` directory has `/nginx-php` directory separated in case of needing to be included other container service directory with its specific contents
 ```
