@@ -278,16 +278,18 @@ SYMFONY docker-compose.yml .env file has been set.
  ✔ Container symfony-app        Running
 ```
 
-If container service has been built with the application content completed, accessing by browsing [http://localhost:8888/](http://localhost:8888/) will display the successful installation welcome page.
+## Project Service
 
-If container has been built without application, the following Makefile recipe will install the application that is configure in [docker/nginx-php/Makefile](docker/nginx-php/Makefile) service
-```bash
-$ make symfony-install
-```
+If the container is built with the pre-installed application content, by browsing to localhost with the selected port configured [http://localhost:8888/](http://localhost:8888/) will display the successfully installation welcome page.
 
-If container has been built with the application copy from repository, the following Makefile recipe will update the application dependencies
+The pre-installed application could require to update its dependencies. The following Makefile recipe will update dependencies set on `composer.json` file
 ```bash
 $ make symfony-update
+```
+
+If it is needed to build the container with other type of application configuration from base, there is a Makefile recipe to set at [docker/Makefile](docker/Makefile) all the commands needed for its installation.
+```bash
+$ make symfony-install
 ```
 
 ## Container Information
