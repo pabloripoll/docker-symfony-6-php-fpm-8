@@ -90,27 +90,32 @@ $ hostname -I
 
 ## Structure
 
-Directories and main files on a tree architecture description
+Directories and main files on a tree architecture description. Main `/docker` directory has `/nginx-php` directory separated in case of needing to be included other container service directory with its specific contents
 ```
 .
 │
 ├── docker
-│   └── nginx-php
-│       └── docker
-│       │   ├── config
-│       │   ├── .env
-│       │   ├── docker-compose.yml
-│       │   └── Dockerfile
-│       │
-│       └── Makefile
+│   ├── nginx-php
+│   │   ├── docker
+│   │   │   ├── config
+│   │   │   ├── .env
+│   │   │   ├── docker-compose.yml
+│   │   │   └── Dockerfile
+│   │   │
+│   │   └── Makefile
+│   │
+│   └── (other...)
 │
 ├── resources
 │   ├── database
 │   │   ├── symfony-init.sql
 │   │   └── symfony-backup.sql
 │   │
+│   ├── doc
+│   │   └── (any documentary file...)
+│   │
 │   └── symfony
-│       └── (any file or directory required for re-building the app...)
+│       └── (any file or directory required for start-up or re-building the app...)
 │
 ├── symfony
 │   └── (application...)
