@@ -226,6 +226,8 @@ DB_BACKUP_NAME="symfony"                    # <- the name of the database backup
 DB_BACKUP_PATH="resources/database"         # <- path where database backup or copy resides
 ```
 
+*(Database service container is explained [below](https://github.com/pabloripoll/docker-symfony-6-php-fpm-8?tab=readme-ov-file#custom-database-service-usage))*
+
 Exacute the following command to create the [docker/.env](docker/.env) file, required for building the container
 ```bash
 $ make symfony-set
@@ -289,13 +291,6 @@ $ make symfony-update
 ```
 
 ## Container Information
-
-Running container on Docker
-```bash
-$ sudo docker ps -a
-CONTAINER ID   IMAGE      COMMAND    CREATED      STATUS      PORTS                                             NAMES
-ecd27aeae010   symf...    "docker-php-entrypoi…"  1 min...    9000/tcp, 0.0.0.0:8888->80/tcp, :::8888->80/tcp   symfony-app
-```
 
 Docker image size
 ```bash
